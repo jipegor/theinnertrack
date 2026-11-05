@@ -1,0 +1,175 @@
+/* The Inner Track · estética editorial inspirada en The Tortured Poets Department.
+   Bootstrap sigue dando la estructura; aquí se cambian colores, tipografía y bordes. */
+
+:root {
+  --paper: #ebe7df;
+  --paper-deep: #e0dbd1;
+  --card: #f5f2eb;
+  --ink: #1d1b19;
+  --ink-soft: #6b655c;
+  --line: #cfc8ba;
+  --field: #faf8f3;
+  --serif: "Libre Caslon Display", "Times New Roman", serif;
+  --type: "Special Elite", "Courier New", monospace;
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+/* Encabezado */
+.app-header {
+  background: transparent !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: none !important;
+}
+
+.app-header h1 {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.app-header .text-secondary {
+  font-family: var(--sans);
+  font-size: 0.7rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft) !important;
+}
+
+/* Títulos de sección */
+h2.h5 {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+/* Tarjetas */
+.card {
+  --bs-card-bg: var(--card);
+  --bs-card-border-color: var(--line);
+  --bs-card-border-radius: 2px;
+  box-shadow: none !important;
+}
+
+.tarea-card .card-title {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.tarea-card .card-text {
+  line-height: 1.6;
+}
+
+.tarea-card .card-text strong {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.form-tarea {
+  position: sticky;
+  top: 1rem;
+}
+
+
+.form-label {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.form-control,
+.form-select {
+  background-color: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  font-size: 0.95rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--ink);
+  box-shadow: none;
+  background-color: #fff;
+}
+
+.form-control::placeholder {
+  font-style: italic;
+  color: #a39d92;
+}
+
+
+.btn-primary {
+  --bs-btn-bg: var(--ink);
+  --bs-btn-border-color: var(--ink);
+  --bs-btn-hover-bg: #3a3733;
+  --bs-btn-hover-border-color: #3a3733;
+  --bs-btn-active-bg: #3a3733;
+  --bs-btn-active-border-color: #3a3733;
+  --bs-btn-disabled-bg: var(--ink);
+  --bs-btn-disabled-border-color: var(--ink);
+  border-radius: 0;
+  font-family: var(--sans);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.65rem 1rem;
+}
+
+.alert-danger {
+  --bs-alert-bg: #eee0dc;
+  --bs-alert-border-color: #d2aaa1;
+  --bs-alert-color: #6b2a20;
+  border-radius: 0;
+  font-size: 0.9rem;
+}
+
+.badge {
+  border-radius: 0;
+  font-family: var(--sans);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.62rem;
+  padding: 0.4rem 0.55rem;
+}
+
+.badge.text-bg-warning {
+  background-color: transparent !important;
+  color: #8a6a1e !important;
+  border: 1px solid #c9ad62;
+}
+
+.badge.text-bg-primary {
+  background-color: transparent !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--ink);
+}
+
+.badge.text-bg-success {
+  background-color: var(--ink) !important;
+  color: var(--paper) !important;
+  border: 1px solid var(--ink);
+}
+
+.badge.text-bg-secondary {
+  background-color: transparent !important;
+  color: var(--ink-soft) !important;
+  border: 1px solid var(--line);
+}

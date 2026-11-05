@@ -5,120 +5,191 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>the inner track.</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Special+Elite&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
 </head>
+
 <body class="bg-light">
 
-  <header class="bg-white border-bottom shadow-sm mb-4">
-    <div class="container py-3">
+  <header class="app-header bg-white shadow-sm mb-4">
+    <div class="container py-3 d-flex justify-content-between align-items-center">
       <h1 class="h3 mb-0">the inner track.</h1>
+      <span class="text-secondary small">Planificador de Tareas</span>
     </div>
   </header>
 
   <main class="container pb-5">
+    <div class="row g-4">
 
-    <section aria-labelledby="titulo-lista">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h2 id="titulo-lista" class="h5 mb-0">Mis tareas</h2>
-        <span class="badge text-bg-secondary">5 tareas</span>
-      </div>
+      <!-- Formulario para registrar tareas -->
+      <aside class="col-lg-4">
+        <div class="card shadow-sm form-tarea">
+          <div class="card-body">
+            <h2 class="h5 mb-3">Nueva tarea</h2>
 
-      <div id="lista-tareas" class="row row-cols-1 row-cols-md-2 g-3">
-
-        <!-- Tarjeta 1 -->
-        <div class="col">
-          <article class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h6 mb-0">Terminar la propuesta de identidad</h3>
-                <span class="badge text-bg-warning">Pendiente</span>
-              </div>
-              <p class="card-text text-secondary small mb-3">
-                Redactar la propuesta de identidad visual para el cliente y revisar la paleta de colores.
-              </p>
-              <p class="card-text small mb-0">
-                <strong>Fecha de entrega:</strong> 28 oct 2026
-              </p>
+            <!-- Alerta de error: oculta al inicio, app.js la muestra si hay datos inválidos -->
+            <div id="validationAlert" class="alert alert-danger d-none" role="alert">
+              <strong>Revisa el formulario:</strong>
+              <ul id="validationErrors" class="mb-0 mt-2 ps-3"></ul>
             </div>
-          </article>
+
+            <form id="taskForm" novalidate>
+              <div class="mb-3">
+                <label for="newTaskNameInput" class="form-label">Nombre de la tarea</label>
+                <input type="text" class="form-control" id="newTaskNameInput" name="nombre" placeholder="Ej. Revisar correos">
+              </div>
+
+              <div class="mb-3">
+                <label for="newTaskDescriptionInput" class="form-label">Descripción</label>
+                <textarea class="form-control" id="newTaskDescriptionInput" name="descripcion" rows="3" placeholder="Detalles de la tarea"></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="newTaskDateInput" class="form-label">Fecha de entrega</label>
+                <input type="date" class="form-control" id="newTaskDateInput" name="fecha">
+              </div>
+
+              <div class="mb-3">
+                <label for="newTaskStatusInput" class="form-label">Estado</label>
+                <select class="form-select" id="newTaskStatusInput" name="estado">
+                  <option value="" selected disabled>Selecciona un estado</option>
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="En progreso">En progreso</option>
+                  <option value="Completada">Completada</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">+ Agregar tarea</button>
+            </form>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Lista de tareas -->
+      <section class="col-lg-8" aria-labelledby="titulo-lista">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 id="titulo-lista" class="h5 mb-0">The To-Do Department</h2>
+          <span class="badge text-bg-secondary">5 tareas</span>
         </div>
 
-        <!-- Tarjeta 2 -->
-        <div class="col">
-          <article class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h6 mb-0">Actualizar mi portafolio</h3>
-                <span class="badge text-bg-primary">En progreso</span>
+        <div id="lista-tareas" class="row row-cols-1 row-cols-md-2 g-3">
+
+          <!-- Tarjeta 1 -->
+          <div class="col">
+            <article class="card tarea-card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="card-title h6 mb-0">Terminar la propuesta de identidad</h3>
+                  <span class="badge text-bg-warning">Pendiente</span>
+                </div>
+                <p class="card-text text-secondary small mb-3">
+                  Redactar la propuesta de identidad visual para el cliente y revisar la paleta de colores.
+                </p>
+                <p class="card-text small mb-0">
+                  <strong>Fecha de entrega:</strong> 28 oct 2026
+                </p>
               </div>
-              <p class="card-text text-secondary small mb-3">
-                Agregar tres proyectos recientes y actualizar las imágenes de la portada.
-              </p>
-              <p class="card-text small mb-0">
-                <strong>Fecha de entrega:</strong> 30 oct 2026
-              </p>
-            </div>
-          </article>
-        </div>
+            </article>
+          </div>
 
-        <!-- Tarjeta 3 -->
-        <div class="col">
-          <article class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h6 mb-0">Leer 10 páginas del libro</h3>
-                <span class="badge text-bg-success">Completada</span>
+          <!-- Tarjeta 2 -->
+          <div class="col">
+            <article class="card tarea-card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="card-title h6 mb-0">Actualizar mi portafolio</h3>
+                  <span class="badge text-bg-primary">En progreso</span>
+                </div>
+                <p class="card-text text-secondary small mb-3">
+                  Agregar tres proyectos recientes y actualizar las imágenes de la portada.
+                </p>
+                <p class="card-text small mb-0">
+                  <strong>Fecha de entrega:</strong> 30 oct 2026
+                </p>
               </div>
-              <p class="card-text text-secondary small mb-3">
-                Continuar con el capítulo 4 de la lectura del mes.
-              </p>
-              <p class="card-text small mb-0">
-                <strong>Fecha de entrega:</strong> 27 oct 2026
-              </p>
-            </div>
-          </article>
-        </div>
+            </article>
+          </div>
 
-        <!-- Tarjeta 4 -->
-        <div class="col">
-          <article class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h6 mb-0">Salir a caminar sin el móvil</h3>
-                <span class="badge text-bg-warning">Pendiente</span>
+          <!-- Tarjeta 3 -->
+          <div class="col">
+            <article class="card tarea-card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="card-title h6 mb-0">Leer 10 páginas del libro</h3>
+                  <span class="badge text-bg-success">Completada</span>
+                </div>
+                <p class="card-text text-secondary small mb-3">
+                  Continuar con el capítulo 4 de mi libro de La Sobreviviente.
+                </p>
+                <p class="card-text small mb-0">
+                  <strong>Fecha de entrega:</strong> 27 oct 2026
+                </p>
               </div>
-              <p class="card-text text-secondary small mb-3">
-                Caminar media hora por el parque cercano, sin llevar el teléfono.
-              </p>
-              <p class="card-text small mb-0">
-                <strong>Fecha de entrega:</strong> 28 oct 2026
-              </p>
-            </div>
-          </article>
-        </div>
+            </article>
+          </div>
 
-        <!-- Tarjeta 5 -->
-        <div class="col">
-          <article class="card h-100 shadow-sm">
-            <div class="card-body">
-              <div class="d-flex justify-content-between align-items-start mb-2">
-                <h3 class="card-title h6 mb-0">Ordenar las ideas de la semana</h3>
-                <span class="badge text-bg-primary">En progreso</span>
+          <!-- Tarjeta 4 -->
+          <div class="col">
+            <article class="card tarea-card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="card-title h6 mb-0">Salir a caminar </h3>
+                  <span class="badge text-bg-warning">Pendiente</span>
+                </div>
+                <p class="card-text text-secondary small mb-3">
+                  Caminar media hora por el parque, sin distracciones.
+                </p>
+                <p class="card-text small mb-0">
+                  <strong>Fecha de entrega:</strong> 28 oct 2026
+                </p>
               </div>
-              <p class="card-text text-secondary small mb-3">
-                Revisar las notas sueltas y agruparlas por proyecto.
-              </p>
-              <p class="card-text small mb-0">
-                <strong>Fecha de entrega:</strong> 31 oct 2026
-              </p>
-            </div>
-          </article>
+            </article>
+          </div>
+
+          <!-- Tarjeta 5 -->
+          <div class="col">
+            <article class="card tarea-card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="card-title h6 mb-0">Ordenar las ideas de la semana</h3>
+                  <span class="badge text-bg-primary">En progreso</span>
+                </div>
+                <p class="card-text text-secondary small mb-3">
+                  Revisar las notas sueltas y agruparlas por proyecto.
+                </p>
+                <p class="card-text small mb-0">
+                  <strong>Fecha de entrega:</strong> 31 oct 2026
+                </p>
+              </div>
+            </article>
+          </div>
+          
+          <!-- Tarjeta 6 -->
+          <div class="col">
+            <article class="card tarea-card h-100 shadow-sm">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h3 class="card-title h6 mb-0">Fight the alchemy </h3>
+                  <span class="badge text-bg-warning">Completado</span>
+                </div>
+                <p class="card-text text-secondary small mb-3">
+                  Ditch the clowns, get the crown.
+                </p>
+                <p class="card-text small mb-0">
+                  <strong>Fecha de entrega:</strong> 28 oct 2026
+                </p>
+              </div>
+            </article>
+          </div>
+
         </div>
+      </section>
 
-      </div>
-    </section>
-
+    </div>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
