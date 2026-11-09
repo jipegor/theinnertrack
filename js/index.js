@@ -1,3 +1,6 @@
+const taskManager = new TaskManager();
+console.log(taskManager.tasks);
+
 function validFormFieldInput(data) {
   const errors = [];
 
@@ -21,6 +24,7 @@ function validFormFieldInput(data) {
 }
 
 if (typeof document !== 'undefined') {
+  // Validación del formulario (Sprint 1)
   const taskForm = document.querySelector('#taskForm');
   const validationAlert = document.querySelector('#validationAlert');
   const validationErrors = document.querySelector('#validationErrors');
@@ -44,7 +48,6 @@ if (typeof document !== 'undefined') {
     const result = validFormFieldInput(data);
 
     if (!result.isValid) {
-      // Muestra cada error en la alerta
       validationErrors.innerHTML = '';
       result.errors.forEach(function (message) {
         const item = document.createElement('li');
@@ -55,10 +58,27 @@ if (typeof document !== 'undefined') {
       return;
     }
 
-    // Datos válidos: oculta la alerta y deja listo el formulario.
-    // El paso de guardar la tarea en la lista se verá en la siguiente tarea.
     validationAlert.classList.add('d-none');
     console.log('Tarea válida:', data);
     taskForm.reset();
+  });
+
+  // Parte 2: marcar y desmarcar tareas como completadas, sin recargar la página
+  document.querySelectorAll('.btn-toggle').forEach(function (button) {
+    button.addEventListener('click', function () {
+      const card = button.closest('article');
+      const badge = card.querySelector('.badge');
+      const completada = card.classList.toggle('completada');
+
+      if (completada) {
+        badge.textContent = 'Completada';
+        badge.className = 'badge text-bg-success';
+        button.textContent = 'Marcar como pendiente';
+      } else {
+        badge.textContent = 'Pendiente';
+        badge.className = 'badge text-bg-warning';
+        button.textContent = 'Marcar como completada';
+      }
+    });
   });
 }
